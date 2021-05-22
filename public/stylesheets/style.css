@@ -75,13 +75,90 @@ h1 {
   min-height: 70px;
 }
 
-.login-body {
+.login-body, .comment-body {
   padding: 10px 20px 10px 20px;
   min-height: 70px;
 }
 
-#username, #password {
+#username, #password, #signup-username, #signup-password, #create-title {
   width: 98%;
   height: 25px;
   font-size: 18px;
 }
+
+label {
+  color: navy;
+  font-weight: bold;
+}
+
+.submit, .submit-comment, .submit-content, .update-post, .delete {
+  background-color: gray;
+  color: white;
+  width: 100%;
+  margin-top: 10px;
+  height: 35px;
+  font-size: 20px;
+  border-radius: 5px;
+}
+
+.alt-div {
+  margin-top: 10px;
+}
+
+#comment {
+  border-color: lightblue;
+  height: 60px;
+}
+
+#comment-label {
+  margin-bottom: 5px;
+}
+
+#comment, #content {
+  width: 98%;
+  height: 60px;
+  font-size: 18px;
+  border-color: lightblue;
+  padding: 3px;
+  text-align: left;
+}
+
+.gen-div {
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.center-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.new-post-button {
+  margin-top:  30px;
+  background-color: purple;
+  color: white;
+  font-size: x-large;
+  border-radius: 5px;
+  padding: 6px 12px 6px 12px;
+}
+
+.post-canvas {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px 20px 10px 20px;
+}
+
+.your-post {
+  background-color: gray;
+  color: white;
+  border-radius: 5px;
+  display: flex;
+  direction: row;
+  justify-content: space-between; 
+  padding: 0px 20px 0px 20px;
+  margin: 20px 40px 20px 40px;
+  font-size: large;
+}
+
