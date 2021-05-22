@@ -1,0 +1,87 @@
+body {
+  font-family: 'Inter', sand-serif;
+  background-color: paleturquoise;
+  margin: 0px;
+}
+
+header {
+  background-color: navy;
+  color: white;
+}
+
+.nav {
+  padding-top: 15px;
+  width: 100%;
+}
+
+.links {
+  font-size: 23px;
+  margin: 30px 0px 15px 60px;
+  color: white;
+  text-decoration: none;
+}
+
+#logo {
+  padding-bottom: 10px;
+}
+
+h1 {
+  display: flex;
+  margin-left: 60px;
+  font-size: 30px;
+  margin-bottom: 20px;
+  background-color: purple;
+  text-align: center;
+  padding: 8px;
+  width: 235px;
+  border-radius: 10px;
+  box-shadow: 5px 5px rgba(128, 128, 128, 0.644);
+}
+
+.gen-container {
+  border-color: navy;
+  border-width: 4px;
+  border-style: solid;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 20px 20% 0 20%;
+}
+
+.gen-header {
+  display: flex;
+  flex-direction: row;
+  background-color: navy;
+  color: white;
+  font-weight: bold;
+  justify-content: space-between;
+  align-items: center;
+  height: 45px;
+}
+
+.gen-title {
+  font-size: large;
+  padding-left: 20px;
+}
+
+.post-details {
+  font-size: small;
+  padding-right: 20px;
+}
+
+.post-text {
+  padding-left: 20px;
+  padding-right: 20px;
+  min-height: 70px;
+}
+
+.login-body {
+  padding: 10px 20px 10px 20px;
+  min-height: 70px;
+}
+
+#username, #password {
+  width: 98%;
+  height: 25px;
+  font-size: 18px;
+}
