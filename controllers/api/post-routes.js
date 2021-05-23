@@ -2,7 +2,22 @@ const router = require('express').Router();
 const { User, Post, Comment } = require('../../models');
 
 router.get('/', (req, res) => {
-  Post.findAll()
+  Post.findAll({
+    include: [
+      {
+        model: User,
+        attributes: ['username']
+      },
+      {
+        model: Comment,
+        attributes: ['comment_text'],
+        include: [{
+          model: User,
+          attributes: ['username']
+        }]
+      }
+    ]
+  })
     .then(dbPostData => res.json(dbPostData))
     .catch(err => {
       console.log(err);
@@ -14,7 +29,20 @@ router.get('/:id', (req, res) => {
   Post.findOne({
     where: {
       id: req.params.id
+    },
+    include: [{
+      model: User,
+      attributes: ['username']
+    },
+    {
+      model: Comment,
+      attributes: ['comment_text'],
+      include: [{
+        model: User,
+        attributes: ['username']
+      }]
     }
+  ]
   })
     .then(dbPostData => res.json(dbPostData))
     .catch(err => {
