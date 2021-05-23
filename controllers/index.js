@@ -4,6 +4,7 @@ const apiRoutes = require('./api');
 // frontend routes (handlebar)
 const dashboardRoutes = require('./dashboard-routes');
 const homeRoutes = require('./home-routes');
+// const loginRoutes = require('./login-routes');
 
 router.use('/api', apiRoutes);
 router.use('/dashboard', dashboardRoutes);

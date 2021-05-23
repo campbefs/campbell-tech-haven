@@ -1,24 +1,14 @@
-<div class="gen-container">
-  <div class="gen-header">
-    <p class="gen-title">Why MVC is so important</p>
-    <p class="post-details">Posted by Campbell on 5/21/21</p>
-  </div>
-  <div class="post-text">
-    <p>
-      Heya Heeya do that thang yo you got this and that
-    </p>
-  </div>
-</div>
+{{#if posts.length}}
+{{#each posts as |post|}}
 
-<div class="gen-container">
-  <div class="gen-header">
-  </div>
-  <div class="post-text">
-    <p>
-      Heya Heeya do that thang yo you got this and that
-    </p>
-    <p>
-      --Campbell, 5/8/20
-    </p>
-  </div>
-</div>
+{{> post-info post}}
+
+{{#if post.comments.length}}
+{{#each post.comments as |comment|}}
+{{> comment-info comment}}
+{{/each}}
+{{/if}}
+
+{{/each}}
+{{/if}}
+

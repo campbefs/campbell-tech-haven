@@ -1,29 +1,9 @@
 <div class="post-canvas">
 
-  <div class="your-post">
-    <div class="your-post-title">
-      <p>
-        Object-Relational Mapping
-      </p>
-    </div>
-    <div class="your-post-date">
-      <p>
-        5/8/20
-      </p>
-    </div>
-  </div>
-
-  <div class="your-post">
-    <div class="your-post-title">
-      <p>
-        How to Eat the Rich
-      </p>
-    </div>
-    <div class="your-post-date">
-      <p>
-        5/8/20
-      </p>
-    </div>
-  </div>
+  {{#if posts.length}}
+  {{#each posts as |post|}}
+  {{> my-posts post}}
+  {{/each}}
+  {{/if}}
 
 </div>

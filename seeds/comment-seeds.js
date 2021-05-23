@@ -32,6 +32,11 @@ const commentData = [
     comment_text: `I think you should go on the Incredi-coaster next time!`,
     post_id: 3
   },
+  {
+    user_id: 4,
+    comment_text: `That is a lot of us little ones`,
+    post_id: 1
+  },
 ];
 
 const seedComments = () => Comment.bulkCreate(commentData);
