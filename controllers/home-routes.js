@@ -65,11 +65,7 @@ router.get('/post/:id', (req, res) => {
   ]
   })
     .then(dbPostData => {
-      // console.log('dbPostData: ', dbPostData);
-      // const posts = dbPostData.map(post => post.get({ plain: true}));
       const posts = [ dbPostData.get({ plain: true }) ]
-      console.log('posts: ', posts);
-      console.log('comment: ', posts[0].comments);
       res.render('singleblog', {posts, loggedIn: true });
     })
     .catch(err => {
@@ -78,9 +74,40 @@ router.get('/post/:id', (req, res) => {
     });
 });
 
-// Editpost -- get it's own route
-
 // add comment -- get it's own route
+router.get('/post/:id/comment', (req, res) => {
+  Post.findOne({
+    where: {
+      id: req.params.id
+    },
+    include: [{
+      model: User,
+      attributes: ['username']
+    },
+    {
+      model: Comment,
+      attributes: ['comment_text'],
+      include: [{
+        model: User,
+        attributes: ['username']
+      }]
+    }
+  ]
+  })
+    .then(dbPostData => {
+      const posts = [ dbPostData.get({ plain: true }) ]
+      res.render('addcomment', {posts, loggedIn: true });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+
+// Edit post -- get it's own route
+
+
 
 
 module.exports = router;

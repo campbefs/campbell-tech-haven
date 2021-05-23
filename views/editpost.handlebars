@@ -3,23 +3,21 @@
     <p class="gen-title">Edit Post</p>
   </div>
   <div class="comment-body">
-    <form>
-      <div class="gen-div">
+    <form class="edit-form">
+      <div class="form-div">
         <label for="create-title">Title</label><br>
       </div>
-      <input type="text" id="create-title" name="create-title"><br>
+      <input value="{{mypost.title}}" type="text" id="create-title" name="create-title"><br>
 
-      <div class="gen-div">
+      <div class="form-div">
         <label id="content-label" for="content">Content</label><br>
       </div>
-      <textarea id="content"></textarea>
+      <textarea id="content">{{mypost.body}}</textarea>
       <br>
       <input class="update-post" type="submit" value="Update Post">
-      <input class="delete" type="submit" value="Delete">
     </form>
+      <button class="delete">Delete</button>
   </div>
 </div>
 
-<div class="center-div">
-  <button class="new-post-button">+ New Post</button>
-</div>
+<script src="/javascript/edit-post.js"></script>

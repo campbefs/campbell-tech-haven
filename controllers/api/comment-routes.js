@@ -14,6 +14,18 @@ router.get('/', (req, res) => {
 
 // Put  - skipped
 
+// Post
+router.post('/', (req, res) => {
+  Comment.create(req.body) // user_id, comment_text, post_id
+    .then(dbCommentData => res.json(dbCommentData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+
+// Delete
 router.delete('/:id', (req, res) => {
   Comment.destroy({
     where: {
@@ -32,5 +44,6 @@ router.delete('/:id', (req, res) => {
       res.status(500).json(err);
     });
 });
+
 
 module.exports = router;

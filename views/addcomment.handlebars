@@ -1,25 +1,24 @@
-<div class="gen-container">
-  <div class="gen-header">
-    <p class="gen-title">Why MVC is so important</p>
-    <p class="post-details">Posted by Campbell on 5/21/21</p>
-  </div>
-  <div class="post-text">
-    <p>
-      Heya Heeya do that thang yo you got this and that
-    </p>
-  </div>
-</div>
+  {{#if posts.length}}
+  {{#each posts as |post|}}
+  {{> post-info-nonlink post}}
+  {{/each}}
+  {{/if}}
 
 <div class="gen-container">
-  <div class="gen-header"></div>
   <div class="comment-body">
-    <form>
+
+    <form class="comment-form">
       <div class="gen-div">
         <label id="comment-label" for="comment">Comment</label><br>
       </div>
+
       <textarea id="comment"></textarea>
       <br>
       <input class="submit-comment" type="submit" value="Submit">
     </form>
+
   </div>
 </div>
+
+<script src="/javascript/add-comment.js"></script>
+

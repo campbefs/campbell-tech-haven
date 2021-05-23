@@ -14,7 +14,13 @@ router.get('/:id', (req, res) => {
   User.findOne({
     where: {
       id: req.params.id
-    }
+    },
+    include: [
+      {
+        model: Post,
+        attributes: ['title', 'createdAt']
+      }
+    ]
   })
   .then(dbUserData => res.json(dbUserData))
   .catch(err => {

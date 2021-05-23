@@ -5,29 +5,22 @@ const { User, Post, Comment } = require('../models');
 
 // Dashboard
 router.get('/', (req, res) => {
-  Post.findAll({
+  User.findOne({
     where: {
       id: 1 // req.session.user_id???
     },
+    attributes: ['id', 'username'],
     include: [
       {
-        model: User,
-        attributes: ['username']
-      },
-      {
-        model: Comment,
-        attributes: ['comment_text'],
-        include: [{
-          model: User,
-          attributes: ['username']
-        }]
+        model: Post,
+        attributes: ['title', 'body', 'createdAt', 'id']
       }
     ]
   })
-    .then(dbPostData => {
+    .then(dbUserData => {
       // serialize data before passing to template
-      const posts = dbPostData.map(post => post.get({ plain: true}));
-      // console.log(posts);
+      const userData = dbUserData.get({ plain: true});
+      const posts = userData.posts;
       res.render('dashboard', {posts, loggedIn: true });
     })
     .catch(err => {
@@ -41,6 +34,26 @@ router.get('/createpost', (req, res) => {
   res.render('createpost');
 })
 
+router.get('/edit-post/:id', (req, res) => {
+  Post.findOne({
+    where: {
+      id: req.params.id
+    },
+    include: [{
+      model: User,
+      attributes: ['username']
+    }]
+  })
+    .then(dbPostData => {
+      const mypost = dbPostData.get({ plain: true });
+      // console.log(mypost);
+      res.render('editpost', {mypost, loggedIn: true});
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 module.exports = router;
 

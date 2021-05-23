@@ -1,6 +1,8 @@
+<div id="home">
+  {{#if posts.length}}
+  {{#each posts as |post|}}
+  {{> post-info post}}
+  {{/each}}
+  {{/if}}
+</div>
 
-{{#if posts.length}}
-{{#each posts as |post|}}
-{{> post-info post}}
-{{/each}}
-{{/if}}

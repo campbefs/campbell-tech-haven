@@ -1,14 +1,16 @@
 {{#if posts.length}}
 {{#each posts as |post|}}
 
-{{> post-info post}}
+{{> post-info-nonlink post}}
 
-{{#if post.comments.length}}
-{{#each post.comments as |comment|}}
-{{> comment-info comment}}
-{{/each}}
-{{/if}}
+<div id="comment-block">
+  {{#if post.comments.length}}
+  {{#each post.comments as |comment|}}
+  {{> comment-info comment}}
+  {{/each}}
+  {{/if}}
 
-{{/each}}
-{{/if}}
+  {{/each}}
+  {{/if}}
+</div>
 

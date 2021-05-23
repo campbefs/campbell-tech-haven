@@ -1,8 +1,8 @@
 <div class="gen-container">
-  <a class="gen-header" href="/post/{{this.id}}/comment"> {{!-- big giant link! --}}
-    <p class="gen-title">{{this.title}}</p>
+  <div class="gen-header">
+    <p class="gen-title" style="color:white">{{this.title}}</p>
     <p class="post-details">Posted by {{this.user.username}} on {{format_date this.createdAt}}</p>
-  </a>
+  </div>
   <div class="post-text">
     <p>
       {{this.body}}
