@@ -127,8 +127,8 @@ label {
 
 #comment-label {
   padding: 8px 12px 8px 12px;
-  background-color:navy;
-  color: white;
+  /* background-color:navy; */
+  color: rgb(22, 22, 22);
   font-weight: bold;
   border-radius: 5px;
 }

@@ -5,9 +5,9 @@
   {{/if}}
 
 <div class="gen-container">
-  <div class="comment-body">
-
-    <form class="comment-form">
+  <div class="gen-header"></div>
+  <div style="height: 180px;" class="post-text">
+    <form style="margin-top: 15px" class="comment-form">
       <div class="gen-div">
         <label id="comment-label" for="comment">Comment</label><br>
       </div>
@@ -20,7 +20,7 @@
   </div>
 </div>
 
-<div id="comment-block">
+<div class="comment-block">
   {{#each posts as |post|}}
 
   <div>{{post.comments.length}}</div>
