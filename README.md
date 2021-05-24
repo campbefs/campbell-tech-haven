@@ -36,5 +36,8 @@ If you have any questions, you can find my GitHub page [here](https://github.com
 ## License
 This application is covered under the following license: [The Do What the Fuck You Want to Public License](http://www.wtfpl.net/about/)
 
+## Deployed Application
+https://the-tech-haven.herokuapp.com/
+
 ## Live Application Snapshot
 ![alt text](./assets/images/tech-haven.JPG 'Live Application Screenshot')
