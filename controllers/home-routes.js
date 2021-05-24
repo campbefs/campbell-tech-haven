@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { User, Post, Comment } = require('../models');
-// const withAuth = require('../utils/auth');
+const withAuth = require('../utils/auth');
 
 // Home Route
 router.get('/', (req, res) => {
@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
       // serialize data before passing to template
       const posts = dbPostData.map(post => post.get({ plain: true}));
       // console.log(posts);
-      res.render('home', {posts, loggedIn: true });
+      res.render('home', {posts, loggedIn: req.session.loggedIn });
     })
     .catch(err => {
       console.log(err);
@@ -45,7 +45,7 @@ router.get('/signup', (req, res) => {
 
 
 // Singleblog -- get its own route
-router.get('/post/:id', (req, res) => {
+router.get('/post/:id', withAuth, (req, res) => {
   Post.findOne({
     where: {
       id: req.params.id
@@ -66,7 +66,7 @@ router.get('/post/:id', (req, res) => {
   })
     .then(dbPostData => {
       const posts = [ dbPostData.get({ plain: true }) ]
-      res.render('singleblog', {posts, loggedIn: true });
+      res.render('singleblog', {posts, loggedIn: req.session.loggedIn });
     })
     .catch(err => {
       console.log(err);
@@ -75,7 +75,7 @@ router.get('/post/:id', (req, res) => {
 });
 
 // add comment -- get it's own route
-router.get('/post/:id/comment', (req, res) => {
+router.get('/post/:id/comment', withAuth, (req, res) => {
   Post.findOne({
     where: {
       id: req.params.id
@@ -96,7 +96,7 @@ router.get('/post/:id/comment', (req, res) => {
   })
     .then(dbPostData => {
       const posts = [ dbPostData.get({ plain: true }) ]
-      res.render('addcomment', {posts, loggedIn: true });
+      res.render('addcomment', {posts, loggedIn: req.session.loggedIn });
     })
     .catch(err => {
       console.log(err);
@@ -106,8 +106,6 @@ router.get('/post/:id/comment', (req, res) => {
 
 
 // Edit post -- get it's own route
-
-
 
 
 module.exports = router;

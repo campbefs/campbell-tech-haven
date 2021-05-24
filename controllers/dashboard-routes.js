@@ -1,10 +1,10 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { User, Post, Comment } = require('../models');
-// const withAuth = require('../utils/auth');
+const withAuth = require('../utils/auth');
 
 // Dashboard
-router.get('/', (req, res) => {
+router.get('/', withAuth, (req, res) => {
   User.findOne({
     where: {
       id: 1 // req.session.user_id???
@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
       // serialize data before passing to template
       const userData = dbUserData.get({ plain: true});
       const posts = userData.posts;
-      res.render('dashboard', {posts, loggedIn: true });
+      res.render('dashboard', {posts, loggedIn: req.session.loggedIn });
     })
     .catch(err => {
       console.log(err);
@@ -30,11 +30,11 @@ router.get('/', (req, res) => {
 });
 
 // Create post
-router.get('/createpost', (req, res) => {
+router.get('/createpost', withAuth, (req, res) => {
   res.render('createpost');
 })
 
-router.get('/edit-post/:id', (req, res) => {
+router.get('/edit-post/:id', withAuth, (req, res) => {
   Post.findOne({
     where: {
       id: req.params.id
@@ -47,7 +47,7 @@ router.get('/edit-post/:id', (req, res) => {
     .then(dbPostData => {
       const mypost = dbPostData.get({ plain: true });
       // console.log(mypost);
-      res.render('editpost', {mypost, loggedIn: true});
+      res.render('editpost', {mypost, loggedIn: req.session.loggedIn});
     })
     .catch(err => {
       console.log(err);

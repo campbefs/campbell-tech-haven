@@ -8,21 +8,19 @@ const exphbs = require('express-handlebars');
 const hbs = exphbs.create( { helpers });
 const path = require('path');
 
-// Session imports\
-// const session = require('express-session');
-// const SequelizeStore = require('connect-session-sequelize')(session.Store);
+// Session imports
+const session = require('express-session');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
-// const sess = {
-//   secret: 'Super secret secret',
-//   cookie: {},
-//   resave: false,
-//   saveUninitialized: true,
-//   store: new SequelizeStore({
-//     db: sequelize
-//   })
-// };
-
-// helper code here
+const sess = {
+  secret: 'Super secret secret',
+  cookie: {},
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize
+  })
+};
 
 // App & Port
 const app = express();
@@ -36,7 +34,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public'))); // handlebars middleware
 
 // session middleware
-// app.use(session(sess));
+app.use(session(sess));
 
 // handlebars stuff
 app.engine('handlebars', hbs.engine);
