@@ -71,7 +71,6 @@ router.post('/login', (req, res) => {
 
       if (!dbUserData) {
         res.status(400).json({ message: 'No user with that email address!' });
-        console.log('exiting');
         return;
       }
 
@@ -104,6 +103,39 @@ router.post('/logout', (req, res) => {
   } else {
     res.status(404).end();
   }
+})
+
+router.post('/signup', (req, res) => {
+  // expects: username, password
+  User.findOne({
+    where: {
+      username: req.body.username
+    }
+  })
+    .then(dbUserData => {
+      console.log('userdata', dbUserData);
+      console.log('req.body', req.body);
+      if (dbUserData) {
+        res.status(400).json({ message: 'Username already exists bro!'});
+        return;
+      }
+
+      if (req.body.password.length < 4) {
+        res.status(400).json({ message: 'Password too short. Must be 4 characters!'});
+        return;
+      }
+
+      // Post -- add user to table
+      User.create(req.body)
+        .then(() => {
+          res.json({ message: 'You are now signed up!'});
+        })
+        .catch(err => {
+          console.log(err);
+          res.status(500).json(err);
+        })
+
+    })
 })
 
 module.exports = router;

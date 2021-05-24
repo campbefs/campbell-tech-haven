@@ -32,7 +32,8 @@ Post.init(
     freezeTableName: true,
     underscored: true, // snake case
     timestamps: true,
-    modelName: 'post'
+    modelName: 'post',
+    
   }
 )
 

@@ -7,7 +7,7 @@ const withAuth = require('../utils/auth');
 router.get('/', withAuth, (req, res) => {
   User.findOne({
     where: {
-      id: 1 // req.session.user_id???
+      id: req.session.user_id
     },
     attributes: ['id', 'username'],
     include: [
@@ -31,7 +31,10 @@ router.get('/', withAuth, (req, res) => {
 
 // Create post
 router.get('/createpost', withAuth, (req, res) => {
-  res.render('createpost');
+  res.render('createpost', {
+      user_id: req.session.user_id,
+      loggedIn: req.session.loggedIn
+    });
 })
 
 router.get('/edit-post/:id', withAuth, (req, res) => {

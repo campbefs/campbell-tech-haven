@@ -3,6 +3,7 @@ const newPostHandler = async (event) => {
 
   const title = document.querySelector('#create-title').value.trim();
   const body = document.querySelector('#content').value.trim();
+  const user_id = await document.getElementById('user-id').innerHTML;
 
   if (title && body) {
     const response = await fetch('/api/posts', {
@@ -10,7 +11,7 @@ const newPostHandler = async (event) => {
       body: JSON.stringify({
         title,
         body,
-        user_id: 1 // replace
+        user_id: user_id // replace
       }),
       headers: {
         'Content-Type': 'application/json'

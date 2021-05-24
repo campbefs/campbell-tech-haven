@@ -96,7 +96,15 @@ router.get('/post/:id/comment', withAuth, (req, res) => {
   })
     .then(dbPostData => {
       const posts = [ dbPostData.get({ plain: true }) ]
-      res.render('addcomment', {posts, loggedIn: req.session.loggedIn });
+      const user_id = req.session.user_id;  // passing the user_id into HTML
+
+      res.render('addcomment', {
+        posts, 
+        loggedIn: req.session.loggedIn,
+        user_id
+      });
+
+
     })
     .catch(err => {
       console.log(err);

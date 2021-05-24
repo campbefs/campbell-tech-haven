@@ -4,6 +4,7 @@ const commentFormHandler = async (event) => {
   event.preventDefault();
 
   const comment_text = document.querySelector('#comment').value.trim();
+  const user_id = document.querySelector('#user_id').innerHTML;
 
   // grab the post_id from the URL.  JS doesn't have reverse lookup so get length
   const post_id = window.location.toString().split('/')[
@@ -16,7 +17,7 @@ const commentFormHandler = async (event) => {
       body: JSON.stringify({
         post_id,
         comment_text,
-        user_id: 1  // this will have to come from the session I guess
+        user_id: user_id  // this will have to come from the session I guess
       }),
       headers: {
         'Content-Type': 'application/json'
