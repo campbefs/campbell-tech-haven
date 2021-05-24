@@ -60,7 +60,8 @@ router.get('/post/:id', withAuth, (req, res) => {
       include: [{
         model: User,
         attributes: ['username']
-      }]
+      }],
+      order: [['id', 'DESC']]
     }
   ]
   })
@@ -89,17 +90,19 @@ router.get('/post/:id/comment', withAuth, (req, res) => {
       attributes: ['comment_text'],
       include: [{
         model: User,
-        attributes: ['username']
-      }]
+        attributes: ['username'],
+      }],
+      order: [['id', 'DESC']]
     }
-  ]
+    ],
+
   })
     .then(dbPostData => {
       const posts = [ dbPostData.get({ plain: true }) ]
       const user_id = req.session.user_id;  // passing the user_id into HTML
-
+      console.log(posts);
       res.render('addcomment', {
-        posts, 
+        posts,
         loggedIn: req.session.loggedIn,
         user_id
       });

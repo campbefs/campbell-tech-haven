@@ -20,6 +20,19 @@
   </div>
 </div>
 
+<div id="comment-block">
+  {{#each posts as |post|}}
+
+  <div>{{post.comments.length}}</div>
+  {{#if post.comments.length}}
+  {{#each post.comments as |comment|}}
+  {{> comment-info comment}}
+  {{/each}}
+  {{/if}}
+
+  {{/each}}
+</div>
+
 <div id="user_id" style="display: none">{{user_id}}</div> 
 
 <script src="/javascript/add-comment.js"></script>
