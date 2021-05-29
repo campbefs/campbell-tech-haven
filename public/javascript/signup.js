@@ -34,6 +34,10 @@ const signupFormHandler = async (event) => {
   console.log(username, ' ', password);
 
   // signup route and then login route
+  if (password.length <4 ) {
+    alert("Password must be 4 characters");
+    return;
+  }
   if (username && password) {
     const response = await fetch('/api/users/signup', {
       method: 'POST',
