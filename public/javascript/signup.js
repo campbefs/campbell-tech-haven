@@ -45,8 +45,7 @@ const signupFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      loginFormHandler(event); // if signup is OK then login
-      console.log('you did it!');
+      setTimeout(loginFormHandler(event),5000); // if signup is OK then login
     } else {
       alert(response.statusText);
     }
